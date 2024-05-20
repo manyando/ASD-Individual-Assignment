@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .advertContainer {
+            width: 100%;
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            float: right;
+            margin: 0 0 20px 20px;
+        }
+
+        .advertIMG {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .headerText {
+            font-size: 14px;
+            color: #555;
+        }
+
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+            margin-left: 0;
+        }
+
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Workouts</a>
+        <a href="#">Nutrition</a>
+        <a href="#">Motivation</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Get Fit, Stay Healthy</h1>
+        <p>Welcome to your daily dose of fitness inspiration! We're here to help you achieve your goals with workouts, nutrition advice, and motivation.</p>
+
+        <h2>Today's Workout:</h2>
+        <ul>
+            <li>Warm-up: 5 minutes of light cardio.</li>
+            <li>Strength Training: 3 sets of 10-12 reps of squats, lunges, push-ups, and rows.</li>
+            <li>Cardio: 20 minutes of running or cycling.</li>
+            <li>Cool-down: 5 minutes of stretching.</li>
+        </ul>
+
+        <h2>Healthy Eating Tip:</h2>
+        <p>Make sure you're eating plenty of fruits, vegetables, and whole grains. Avoid processed foods and sugary drinks as much as possible.</p>
+
+        <div class="advertContainer">
+            <a class="anchorElement" target="_blank">
+                <img class="advertIMG" src="" alt="">
+            </a>
+            <p class="headerText"></p>
+        </div>
+
+        <h2>Motivational Quote:</h2>
+        <blockquote>"The difference between ordinary and extraordinary is that little extra." - Jimmy Johnson</blockquote> 
+
+    </div>
+
+
+    <script>
+        var formdata = new FormData();
+        formdata.append("type", "Light Square");
+        formdata.append("tags", "music,party");
+
+        var ajax = new XMLHttpRequest();
+        ajax.addEventListener("load", completeHandler, false);
+
+        ajax.open("POST", "https://ad.simaneka.com/api/get");
+        ajax.setRequestHeader("authorisation", "bnoFt9B4LUkiL62WLNPF2d3LZ4QRL8Ys");
+
+        ajax.send(formdata);
+
+        function completeHandler(event) {
+            var response = JSON.parse(event.target.responseText);
+            
+            console.log(response);
+
+            document.querySelector('.advertIMG').src = response.link;
+            document.querySelector('.advertIMG').alt = response.alt;
+            document.querySelector('.anchorElement').href = response.href;
+            document.querySelector('.headerText').innerHTML = response.message;
+        }
+    </script>
+
+</body>
+</html>
